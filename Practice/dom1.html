@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="LoginForm" action="index.html">
+        First name: <input type="text" name="fname" value="Donald"> <br>
+        Last name: <input type="text" name="lname" value="Jake"><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <p>Click the "Try it" button to display the number of elements in the form</p>
+    
+    <button onclick="myFunction()">Try it</button>
+
+    <p id="displaySpace"></p>
+
+    <script>
+        function myFunction() {  // --> calling the myFunction for the button 
+            var x = document.getElementById("LoginForm").elements.length; ///taking the number of elements inside the loginForm
+            var y = document.getElementById("LoginForm").elements[0].value; //taking the value of the 0th element inside the loginForm
+            document.getElementById("displaySpace").innerHTML = "Found " + x + " elements in the form" + " First name entered is: " + y; //Callin the displaySpace para here
+        
+        const para = document.createElement("p");  //defined a variable for the para
+            para.innerText = "This is a paragraph created vai DOM."; //innerText is a property in the DOM used to get or set the visible text content of an HTML element
+            document.body.appendChild(para); // Appends the newly created <p> element to the end of the <body> of the HTML document
+
+                //Note: You can call appendChild() earlier if needed, but any changes to the element after it's appended will affect the live DOM immediately.
+                //SO it is a convention to call the appendChild in the last
+        }
+    </script>
+</body>
+</html>
