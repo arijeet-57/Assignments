@@ -1,0 +1,70 @@
+We make a DOM manipulated dynamic area calculator for a triangle using express vpn 
+Make the express server first using the following code
+const express = require("express");
+const cors = require("cors"); // <--- add this
+const app = express();
+
+app.use(cors()); handles the cors error 
+
+app.get("/", (req, res) => {
+  const h = parseInt(req.query.h);
+  const b = parseInt(req.query.b);
+  const area = 0.5 * h * b;
+  res.send({
+    area: area,
+  });
+});
+
+app.listen(3000);
+
+When your frontend (e.g., from file://, localhost, or another domain) tries to access your Replit backend, the browser checks if the backend explicitly allows that origin.
+If it doesn’t, you’ll get:
+❌ CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+Even though the status code is 200 OK, the browser blocks the response.
+
+Now write the follong code in an html file:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area of a triangle using fethch and DOM</title>
+</head>
+<body>
+
+    <h3>Area of a Triangle</h3>
+      
+    <input type="text" id="height"> 
+    <br><br>
+    <input type="text" id="base">
+    <br><br>
+    <button onclick="area()">Calculate Area</button>
+    <br><br>
+    <div id="AreaofTriangle"></div>
+
+
+<script>
+        //Out  goal is to make a DOM dynamic site where we input base and height and it gives us the area of the rectangle
+        //firstly I am going to make an express server/api on replit and make it go live so that i can fetch the information from there
+        
+        // function
+
+        async function area() {
+            const h = document.getElementById("height").value;
+            const b = document.getElementById("base").value;
+            
+            const response = await fetch("https://9debeb2f-f803-4a12-b211-29fd3d902bc2-00-1yqzr6x2x5zyu.worf.replit.dev/?h=" + h + "&b=" + b); //first make the server and then make it live the use it here
+            const ans = await response.json();
+            document.getElementById("AreaofTriangle").innerHTML = "Area of the Triangle is : " + ans.area;
+
+        }
+</script>
+
+</body>
+</html>
+
+
+now run the express server/api in the replit
+we will be able to perform the functions as mentioned by calcaulating the are for the triangle
+This is an example where we are doing all the work in hte backend and just calling it and connecting it in the frontend
