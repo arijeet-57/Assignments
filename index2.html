@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <input type="text" id="title" placeholder="Todo title"></input> <br /><br />
+  <input type="text" id="description" placeholder="Todo description"></input> <br /><br />
+
+  <div id="container">
+
+  </div>
+  <script>
+    function createChild(title, description, id) { //this creates the structure for the todos
+      const child = document.createElement("div");
+      const firstGrandParent = document.createElement("div"); // it should be grandchild (a little typo)
+      firstGrandParent.innerHTML = title;
+      const secondGrandParent = document.createElement("div");// it should be grandchild (a little typo)
+      secondGrandParent.innerHTML = description;
+      const thirdGrandParent = document.createElement("button");// it should be grandchild (a little typo)
+      thirdGrandParent.innerHTML = "Mark as done";
+      thirdGrandParent.setAttribute("onclick", `markAsDone(${id})`);
+      child.appendChild(firstGrandParent); //until we append eacch and every grandchild, it would not work. so appending is important
+      child.appendChild(secondGrandParent);
+      child.appendChild(thirdGrandParent)
+      child.setAttribute("id", id);
+      return child;
+    }
+    // State will always be an array
+    // Every element of state would have a title, description and id
+    //
+    //
+    function updateDomAccToState(state) {
+        const parent = document.getElementById("container"); //1
+        parent.innerHTML = ""; // 2       lines 1 and 2 clears the element
+        for (let i = 0; i<state.length; i++) {
+            const child = createChild(state[i].title, state[i].description, state[i].id); //this for loop cretes the child and then appends the chld
+            parent.appendChild(child);
+        }
+    }
+    window.setInterval(async function() {
+        const res = await fetch("https://sum-server.100xdevs.com/todos")
+        const json = await res.json();
+        updateDomAccToState(json.todos)
+    }, 5000)
+  </script>
+</body>
+
+</html>
