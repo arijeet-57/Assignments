@@ -1,0 +1,24 @@
+{
+  "name": "mongoproj",
+  "version": "1.0.0",
+  "description": "Description:\r  Need to implement a course selling app. Make sure to setuyp mongodb instance before starting:\r  mongodb+srv://admin2:root@cluster57.achpbe2.mongodb.net/\r  It needs to support two types of users:-\r  1. Users\r  2. Admins",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arijeet-57/Assignments.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arijeet-57/Assignments/issues"
+  },
+  "homepage": "https://github.com/arijeet-57/Assignments#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.16.3"
+  }
+}
