@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area of a triangle using fethch and DOM</title>
+</head>
+<body>
+
+    <h3>Area of a Triangle</h3>
+      
+    <input type="text" id="height"> 
+    <br><br>
+    <input type="text" id="base">
+    <br><br>
+    <button onclick="area()">Calculate Area</button>
+    <br><br>
+    <div id="AreaofTriangle"></div>
+
+
+<script>
+        //Out  goal is to make a DOM dynamic site where we input base and height and it gives us the area of the rectangle
+        //firstly I am going to make an express server/api on replit and make it go live so that i can fetch the information from there
+        
+        // function
+
+        async function area() {
+            const h = document.getElementById("height").value;
+            const b = document.getElementById("base").value;
+            
+            const response = await fetch("https://9debeb2f-f803-4a12-b211-29fd3d902bc2-00-1yqzr6x2x5zyu.worf.replit.dev/?h=" + h + "&b=" + b); //first make the server and then make it live the use it here
+            const ans = await response.json();
+            document.getElementById("AreaofTriangle").innerHTML = "Area of the Triangle is : " + ans.area;
+
+        }
+</script>
+
+</body>
+</html>
+
