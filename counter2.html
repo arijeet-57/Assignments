@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="buttonParent">
+
+    </div>
+
+    <script>
+        let state = { //global variable of state for the button and initially set to 0
+            count: 0
+        }
+
+        function onButtonPress() { //
+            state.count++;
+            buttonComponentReRender()
+        }
+
+        function buttonComponentReRender() {
+            document.getElementById("buttonParent").innerHTML = ""; //here we are clearing the parent div (DOM) otherwise more and more divs will get appended
+            const component = buttonComponent(state.count);
+            console.log(component);
+            document.getElementById("buttonParent").appendChild(component);
+        }
+
+        function buttonComponent(count) {
+            const button = document.createElement("button"); // we are creating the button here 
+            button.innerHTML = `Counter ${count}`; 
+            button.setAttribute("onclick", `onButtonPress()`); //adding the attribute for the onclick()
+            return button;
+        }
+
+        buttonComponentReRender(); // ---> calling the function explicitly so that the button is defined and visible
+    </script>
+</body>
+</html>

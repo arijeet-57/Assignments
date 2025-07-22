@@ -9,9 +9,8 @@
  Users are allowed to sigup, view courses, purchase cfourses.
  Example like udemy
 
- In this project authentication is not implemeneted the right way. We will learn how to do that in the next assignment
+ In this project authentication is not implemeneted the right way.
  For this one, in every authenticated requests, you need to sed the username and password in the headers (and not in the jwt).
- This is the reason why thsi assignment foes not have a sign in route
 
  NEED to use mongdb to store all the data 
  ADMIN ROUTES:
